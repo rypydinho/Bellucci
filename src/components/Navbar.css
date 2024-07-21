@@ -9,6 +9,7 @@ nav {
     position: sticky;
     top: 0;
     z-index: 1000;
+    font-weight: 400;
   }
   
   .logo img {
@@ -58,3 +59,20 @@ nav {
     width: 24px; 
   }
   
+  .language-toggle {
+    cursor: pointer;
+    padding: 0.5em 1em;
+    margin-left: 1em;
+    color: #CBA135; /* Soft Gold */
+    transition: transform 0.3s, color 0.3s;
+    font-family: 'Fustat', sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-size: large;
+    font-style: normal;
+  }
+  
+  .language-toggle:hover {
+    transform: scale(1.1);
+    color: #CBA135; /* Soft Gold */
+  }

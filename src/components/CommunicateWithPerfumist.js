@@ -12,9 +12,16 @@ const CommunicateWithPerfumist = () => {
     setSubmitted(true);
   };
 
+  const handleSendAnother = () => {
+    setSubmitted(false);
+    setName('');
+    setEmail('');
+    setMessage('');
+  };
+
   return (
     <section id="communicate-section" className="communicate-section">
-      <h2>Communicate with Our Perfumists</h2>
+      <h2>Communicate with Our Perfumers</h2>
       {!submitted ? (
         <form className="contact-form" onSubmit={handleSubmit}>
           <div className="form-group">
@@ -49,7 +56,10 @@ const CommunicateWithPerfumist = () => {
           <button type="submit" className="submit-button">Send Message</button>
         </form>
       ) : (
-        <p>Thank you for your message! Our perfumist will get back to you shortly.</p>
+        <div>
+          <p>Thank you for your message! Our perfumer will get back to you shortly.</p>
+          <button onClick={handleSendAnother} className="submit-button">Send Another Message</button>
+        </div>
       )}
     </section>
   );

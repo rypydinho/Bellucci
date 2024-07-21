@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './WomenFragrances.css';
 
 const filterProducts = (products, filters) => {
@@ -39,14 +39,22 @@ const filterProducts = (products, filters) => {
 };
 
 const WomenFragrances = ({ filters, onAddToBag }) => {
+  const [showConfirmation, setShowConfirmation] = useState(false);
+
   const products = [
-    { id: 1, name: 'La Femme', image: 'woman.jpeg', price: '$180', notes: ['floral'], gender: 'women' },
-    { id: 2, name: 'Santo', image: 'santo1.jpeg', price: '$170', notes: ['woody'], gender: 'women' },
-    { id: 3, name: 'Regina', image: 'regina.jpeg', price: '$210', notes: ['citrus'], gender: 'women' },
-    { id: 4, name: 'Afrodisiaca', image: 'afrodisiaca.jpeg', price: '$260', notes: ['woody'], gender: 'women' },
+    { id: 1, name: 'La Femme', image: `${process.env.PUBLIC_URL}/woman.jpeg`, price: '$180', notes: ['floral'], gender: 'women' },
+    { id: 2, name: 'Santo', image: `${process.env.PUBLIC_URL}/santo1.jpeg`, price: '$170', notes: ['woody'], gender: 'women' },
+    { id: 3, name: 'Regina', image: `${process.env.PUBLIC_URL}/regina.jpeg`, price: '$210', notes: ['citrus'], gender: 'women' },
+    { id: 4, name: 'Afrodisiaca', image: `${process.env.PUBLIC_URL}/afrodisiaca.jpeg`, price: '$260', notes: ['woody'], gender: 'women' },
   ];
 
   const filteredProducts = filterProducts(products, filters);
+
+  const handleAddToBag = (product) => {
+    onAddToBag(product);
+    setShowConfirmation(true);
+    setTimeout(() => setShowConfirmation(false), 3000); // Hide message after 3 seconds
+  };
 
   return (
     <section id="women-fragrances" className="women-fragrances">
@@ -55,12 +63,15 @@ const WomenFragrances = ({ filters, onAddToBag }) => {
         {filteredProducts.map((product) => (
           <div key={product.id} className="product-card">
             <img src={product.image} alt={product.name} />
-            <div className="product-name-overlay">{product.name}</div>
+            <div className="product-overlay">
+              <div className="product-name-overlay">{product.name}</div>
+            </div>
             <p>{product.price}</p>
-            <button onClick={() => onAddToBag(product)}>Add to Bag</button>
+            <button onClick={() => handleAddToBag(product)}>Add to Bag</button>
           </div>
         ))}
       </div>
+      {showConfirmation && <div className="confirmation-message">Item has been added to bag</div>}
     </section>
   );
 };

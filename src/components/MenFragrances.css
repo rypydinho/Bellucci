@@ -1,112 +1,135 @@
-/* src/components/MenFragrances.css */
 .men-fragrances {
-    text-align: center;
-    margin: 4em 0;
-    font-family: 'Fustat', sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 100;
-    font-style: normal;
-  }
-  
-  .men-fragrances h2 {
-    font-family: 'Fustat', sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 200;
-    font-style: normal;
-    margin-bottom: 1em;
-    font-size: 2.5em;
-    color: #36454F; 
-    font-family: 'Playfair Display', serif; /* Elegant font */
-  }
-  
-  .products {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: max(2em, 5vw); /* Consistent gap */
-    justify-content: center;
-  }
-  
-  .product-card {
-    background-color: #FFF8DC; /* Light Ivory */
-    border: 1px solid #E5E4E2; /* Platinum */
-    border-radius: 10px;
-    padding: 1em;
-    text-align: center;
-    max-width: 500px;
-    margin: 0 auto;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
-    position: relative; 
-    overflow: hidden; 
-    transition: transform 0.3s, box-shadow 0.3s; 
-  }
-  
-  .product-card:hover {
-    transform: translateY(-5px); /* Lift effect on hover */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* More shadow on hover */
-  }
-  
-  .product-card img {
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
-    transition: filter 0.3s; /* Nice and Smooth transition for blur */
-  }
-  
-  .product-card:hover img {
-    filter: blur(5px); /* sick Blur effect on hover */
-  }
-  
-  .product-name-overlay {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 1.5em;
-    color: #CBA135; /* Soft Gold */
-    font-family: 'Fustat', sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 300;
-    font-style: normal;
-    opacity: 0;
-    transition: opacity 0.3s; 
-  }
-  
-  .product-card:hover .product-name-overlay {
-    opacity: 1; 
-  }
-  
-  .product-card p {
-    margin: 1em 0;
-    font-size: 1.2em;
-    color: #36454F; /* Charcoal */
-    font-family: 'Fustat', sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 100;
-    font-style: normal;
-  }
-  
-  .product-card button {
-    font-family: 'Fustat', sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 300;
-    font-style: normal;
-    padding: 0.5em 1.5em;
-    background: #046307; /* Emerald Green */
-    color: #CBA135;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-    font-size: 1em;
-    transition: background 0.3s;
-    transition: background-color 0.3s, transform 0.3s; /* a Smooth hover effect */
-  }
-  
-  .product-card button:hover {
-    background: #034f04;
-    background-color: #003d44; 
-    transform: scale(1.05); /* enlarge for when ur hovering */
-  }
-  
-  
-  
-  
+  text-align: center;
+  margin: 4em 0;
+  font-family: 'Fustat', sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 100;
+  font-style: normal;
+}
+
+.men-fragrances h2 {
+  font-family: 'Fustat', sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
+  margin-bottom: 1em;
+  font-size: 2.5em;
+  color: #36454F; /* Charcoal */
+  font-family: 'Playfair Display', serif; /* Elegant font */
+}
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: max(2em, 5vw); /* Consistent gap */
+  justify-content: center;
+}
+
+.product-card {
+  background-color: #FFF8DC; /* Light Ivory */
+  border: 1px solid #E5E4E2; /* Platinum */
+  border-radius: 10px;
+  padding: 1em;
+  text-align: center;
+  max-width: 500px;
+  margin: 0 auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  position: relative; /* Position for overlay */
+  transition: transform 0.3s, box-shadow 0.3s; /* Smooth hover effects */
+}
+
+.product-card:hover {
+  transform: translateY(-5px); /* Lift effect on hover */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+}
+
+.product-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  transition: filter 0.3s; /* Smooth transition for blur */
+  filter: brightness(0.7);
+}
+
+.product-card:hover img {
+  filter: blur(5px) brightness(0.7);
+}
+
+.product-overlay {
+  font-size: 1.2em;
+  font-weight: 400;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s; /* Smooth transition for overlay */
+  pointer-events: none; /* Ensure overlay doesn't block interactions */
+}
+
+.product-card:hover .product-overlay {
+  opacity: 1; /* Show overlay on hover */
+}
+
+.product-name-overlay {
+  font-size: 1.5em;
+  color: #CBA135; /* Soft Gold */
+  font-family: 'Fustat', sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.product-card p {
+  margin: 1em 0;
+  font-size: 1.3em;
+  color: #36454F; /* Charcoal */
+  font-family: 'Fustat', sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.product-card button {
+  font-family: 'Fustat', sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  padding: 0.5em 1.5em;
+  background: #004D40; /* Emerald Green */
+  color: #CBA135; /* Soft Gold */
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 2em;
+  transition: background 0.3s;
+  transition: background-color 0.3s, transform 0.3s; /* Smooth hover effects */
+}
+
+.product-card button:hover {
+  background: #00332D; /* Darker green on hover */
+  transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+.confirmation-message {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #004D40; /* Emerald Green */
+  color: #CBA135; /* Soft Gold */
+  padding: 1em;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  animation: fadeOut 3s forwards; /* Fade out animation */
+}
+
+@keyframes fadeOut {
+  0% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { opacity: 0; }
+}

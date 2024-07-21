@@ -3,7 +3,7 @@
 .customize {
     font-family: 'Fustat', sans-serif;
     font-optical-sizing: auto;
-    font-weight: 100;
+    font-weight: 300;
     font-style: normal;
     text-align: center;
     margin: 4em auto;
@@ -17,6 +17,7 @@
   .customize-container {
     margin: 0 auto;
     padding: 2em;
+    
   }
   
   .progress-bar {
@@ -41,6 +42,7 @@
     color: white;
     z-index: 1;
     transition: background 0.3s ease-in-out;
+    
   }
   
   .progress-line {
@@ -54,11 +56,12 @@
   }
   
   .progress-line.active {
-    background: #046307; /* Emerald Green */
+    background: #004D40; 
   }
   
   .progress-line.active.step-1 {
     width: 33%;
+    
   }
   
   .progress-line.active.step-2 {
@@ -70,7 +73,8 @@
   }
   
   .progress-step.active {
-    background: #046307; /* Emerald Green */
+    background: #004D40; 
+    
   }
   
   .step {
@@ -79,26 +83,33 @@
   
   .step h3 {
     margin-bottom: 1em;
-    color: #2F4F4F; /* Dark Slate Gray */
+    color: #2F4F4F; 
+    
   }
   
   .select {
     margin-bottom: 3em;
-    max-width: 500px; /* Limit the width of the select box */
+    max-width: 500px; 
     margin-left: auto;
     margin-right: auto;
+    font-weight: 400;
   }
   
   button {
-    
-    transition: background 0.3s transform 0.3s; /* Smooth hover effects */
+    color:  #004D40;
+    transition: background 0.3s transform 0.3s; 
     width: 100;
     margin: 0.5em;
+    font-family: 'Fustat', sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-size: larger;
   }
   
   button:hover {
-    background: #034f04; /* Darker green on hover */
-    transform: scale(1.05); /* Slightly enlarge on hover */
+    background: #00332D; 
+    transform: scale(1.05); 
   }
   
   .results {
@@ -106,7 +117,7 @@
   }
   
   .results h3, .results h4 {
-    color: #2F4F4F; /* Dark Slate Gray */
+    color: #2F4F4F; 
   }
   
   .results ul {
@@ -130,7 +141,11 @@
   .step-buttons {
     display: flex;
     justify-content: center;
-    gap: 1em; /* Add horizontal space between buttons */
+    gap: 1em; 
+    font-family: 'Fustat', sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: large;
   }
   
   .results .results-notes {
@@ -158,14 +173,14 @@
     display: block;
     margin-bottom: 1em;
     font-size: 1.2em;
-    color: #2F4F4F; /* Dark Slate Gray */
+    color: #2F4F4F; 
   }
   
   .name-fragrance input {
     width: 80%;
     max-width: 400px;
     padding: 0.5em;
-    border: 1px solid #CBA135; /* Soft Gold */
+    border: 1px solid #CBA135; 
     border-radius: 5px;
     font-size: 1em;
     text-align: center;
@@ -176,4 +191,23 @@
     font-style: normal;
     text-align: center;
   }
+
+  .add-to-bag-message {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #004D40; 
+  color: #CBA135; 
+  padding: 1em;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  animation: fadeOut 3s forwards; 
+}
+
+@keyframes fadeOut {
+  0% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { opacity: 0; }
+}
   

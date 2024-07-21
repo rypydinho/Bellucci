@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import './Checkout.css';
 
-const Checkout = ({ cart, totalPrice }) => {
-  const [isShipped, setIsShipped] = useState(false);
+const Checkout = ({ cart, totalPrice, onRemoveFromCart }) => {
+  const [isOrdered, setIsOrdered] = useState(false);
   const [shippingNumber, setShippingNumber] = useState('');
+  const [error, setError] = useState('');
   const [email, setEmail] = useState('');
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -50,8 +51,15 @@ const Checkout = ({ cart, totalPrice }) => {
     if (validateFields()) {
       const randomShippingNumber = `SH${Math.floor(Math.random() * 1000000)}`;
       setShippingNumber(randomShippingNumber);
-      setIsShipped(true);
+      setIsOrdered(true);
+      setError('');
+    } else {
+      setError('Please fill in all shipping information fields.');
     }
+  };
+
+  const handleRemoveItem = (id) => {
+    onRemoveFromCart(id);
   };
 
   return (
@@ -59,7 +67,7 @@ const Checkout = ({ cart, totalPrice }) => {
       <h2>Checkout</h2>
       {cart.length === 0 ? (
         <p>Your bag is empty. Please add items to your bag.</p>
-      ) : isShipped ? (
+      ) : isOrdered ? (
         <div className="shipping-message">
           <h3>Thank you for your purchase!</h3>
           <p>Your order has been processed and is ready to ship.</p>
@@ -133,17 +141,19 @@ const Checkout = ({ cart, totalPrice }) => {
           <div className="order-summary">
             <h3>Your Order Summary</h3>
             {cart.map((item, index) => (
-              <div key={index}>
+              <div key={index} className="order-item">
                 <p>{item.name}</p>
-                <p>Qty: 1</p>
-                <p>Price: {item.price}</p>
+                <p>Qty: {item.quantity}</p>
+                <p>Total: ${item.quantity * parseFloat(item.price.substring(1))}</p>
+                <button className="remove-button" onClick={() => handleRemoveItem(item.id)}>Remove</button>
               </div>
             ))}
             <div className="total">
               <h4>Total: {totalPrice}</h4>
             </div>
           </div>
-          <button className="ship-button" onClick={handleShipClick}>Ready to Ship</button>
+          <button className="ship-button" onClick={handleShipClick}>Order Now</button>
+          {error && <p className="error">{error}</p>}
         </div>
       )}
     </section>

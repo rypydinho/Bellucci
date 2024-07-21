@@ -1,7 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Footer.css';
+import { FaPhone, FaClock, FaEnvelope } from 'react-icons/fa';
 
 const Footer = () => {
+  const [showFAQ, setShowFAQ] = useState(false);
+
+  const toggleFAQ = () => {
+    setShowFAQ(!showFAQ);
+  };
+
   return (
     <footer>
       <div className="footer-content">
@@ -19,11 +26,31 @@ const Footer = () => {
         </div>
         <div className="contact-info">
           <h3>Contact Us</h3>
-          <p>Phone Number: +39 0586 111111</p>
-          <p>Email: maisonbellucci@info.ca</p>
-          <p>Hours: Monday-Saturday | 9am-5pm</p>
+          <p><FaPhone /> Phone Number: +39 0586 111111</p>
+          <p><FaEnvelope /> Email: maisonbellucci@info.ca</p>
+          <p><FaClock /> Hours: Monday-Saturday | 9am-5pm</p>
         </div>
       </div>
+      <div className="faq-toggle">
+        <a href="#!" onClick={toggleFAQ}>{showFAQ ? 'Hide FAQ' : 'FAQ'}</a>
+      </div>
+      {showFAQ && (
+        <div className="faq-section">
+          <h3>Frequently Asked Questions</h3>
+          <div className="faq-item">
+            <h4>What is a top, middle and base note?</h4>
+            <p>The top note is the initial scent, the middle note is the heart of the fragrance, and the base note is the long-lasting scent that lingers.</p>
+          </div>
+          <div className="faq-item">
+            <h4>What are good scent pairings?</h4>
+            <p>Citrus pairs well with spicy and floral scents, while woody scents complement fresh and aromatic notes.</p>
+          </div>
+          <div className="faq-item">
+            <h4>How many scents should I use?</h4>
+            <p>It's best to start with three to five different scents to create a well-balanced fragrance.</p>
+          </div>
+        </div>
+      )}
       <p>&copy; 2024 Maison Bellucci. All rights reserved.</p>
     </footer>
   );

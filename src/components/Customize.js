@@ -66,10 +66,10 @@ const customStyles = {
 const buttonStyle = {
   fontFamily: 'Fustat, sans-serif',
   fontOpticalSizing: 'auto',
-  fontWeight: '100',
+  fontWeight: '400',
   fontStyle: 'normal',
   padding: '0.5em 1.5em',
-  background: '#046307',
+  background: '#004D40',
   color: '#CBA135',
   border: 'none',
   cursor: 'pointer',
@@ -81,43 +81,51 @@ const buttonStyle = {
 };
 
 const Customize = ({ onAddToBag }) => {
-    const [step, setStep] = useState(1);
-    const [topNotes, setTopNotes] = useState([]);
-    const [middleNotes, setMiddleNotes] = useState([]);
-    const [baseNotes, setBaseNotes] = useState([]);
-    const [fragranceName, setFragranceName] = useState('');
-    const [error, setError] = useState('');
-  
-    const handleNextStep = () => {
-      if ((step === 1 && topNotes.length === 0) ||
-          (step === 2 && middleNotes.length === 0) ||
-          (step === 3 && baseNotes.length === 0)) {
-        setError('Please select at least one note.');
-        return;
-      }
-      setError('');
-      setStep(step + 1);
-    };
-  
-    const handlePreviousStep = () => setStep(step - 1);
-  
-    const handleSelectChange = (selectedOptions, setNotes) => {
-      if (selectedOptions.length <= 3) {
-        setNotes(selectedOptions);
-      }
-    };
-  
-    const handleAddToBagClick = () => {
-      if (!fragranceName) {
-        setError('Please enter a name for your fragrance.');
-        return;
-      }
-      onAddToBag({ name: fragranceName, price: '$415' }); // Adjust price as needed
-    };
+  const [step, setStep] = useState(1);
+  const [topNotes, setTopNotes] = useState([]);
+  const [middleNotes, setMiddleNotes] = useState([]);
+  const [baseNotes, setBaseNotes] = useState([]);
+  const [fragranceName, setFragranceName] = useState('');
+  const [error, setError] = useState('');
+  const [showAddToBagMessage, setShowAddToBagMessage] = useState(false);
+
+  const handleNextStep = () => {
+    if ((step === 1 && topNotes.length === 0) ||
+        (step === 2 && middleNotes.length === 0) ||
+        (step === 3 && baseNotes.length === 0)) {
+      setError('Please select at least one note.');
+      return;
+    }
+    setError('');
+    setStep(step + 1);
+  };
+
+  const handlePreviousStep = () => setStep(step - 1);
+
+  const handleSelectChange = (selectedOptions, setNotes) => {
+    if (selectedOptions.length <= 3) {
+      setNotes(selectedOptions);
+    }
+  };
+
+  const handleAddToBagClick = () => {
+    if (!fragranceName) {
+      setError('Please enter a name for your fragrance.');
+      return;
+    }
+    onAddToBag({ name: fragranceName, price: '$415' });
+    setShowAddToBagMessage(true);
+    setTimeout(() => {
+      setShowAddToBagMessage(false);
+    }, 2000); // Hides the message after 2 seconds
+  };
+
   
     return (
+      
       <div id="customize-section" className="customize">
-        <h2>Customize Your Fragrance</h2>
+        
+        <h2>Craft Your Fragrance</h2>
         <div className="progress-bar">
           <div className={`progress-step ${step >= 1 ? 'active' : ''}`}>1</div>
           <div className={`progress-line ${step >= 2 ? 'active step-1' : ''}`}></div>
@@ -198,25 +206,33 @@ const Customize = ({ onAddToBag }) => {
               </div>
             </div>
             <div className="name-fragrance">
-              <label htmlFor="fragrance-name">Name Your Fragrance:</label>
-              <input
-                type="text"
-                id="fragrance-name"
-                value={fragranceName}
-                onChange={(e) => setFragranceName(e.target.value)}
-                placeholder="Enter fragrance name"
-              />
-            </div>
-            {error && <p className="error">{error}</p>}
-            <div className="step-buttons">
-              <button style={buttonStyle} onClick={handlePreviousStep}>Previous</button>
-              <button style={buttonStyle} onClick={handleAddToBagClick}>Add to Bag</button>
-            </div>
-          </div>
-        )}
+            <label htmlFor="fragrance-name">Name Your Fragrance:</label>
+          <input
+            type="text"
+            id="fragrance-name"
+            value={fragranceName}
+            onChange={(e) => setFragranceName(e.target.value)}
+            placeholder="Enter fragrance name"
+          />
+        </div>
+        {error && <p className="error">{error}</p>}
+        <div className="step-buttons">
+          <button style={buttonStyle} onClick={handlePreviousStep}>Previous</button>
+          <a href="#checkout-section">
+            <button style={buttonStyle} onClick={handleAddToBagClick}>Add to Bag</button>
+          </a>
+        </div>
       </div>
-    );
-  };
-  
-  export default Customize;
+    )}
+    {showAddToBagMessage && (
+      <div className="add-to-bag-message">
+        Item has been added to the bag
+      </div>
+    )}
+  </div>
+);
+};
+
+export default Customize;
+
   

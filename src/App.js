@@ -19,15 +19,24 @@ const App = () => {
   const [currentSection, setCurrentSection] = useState('');
 
   const handleAddToBag = (product) => {
-    setCart([...cart, product]);
+    const existingProduct = cart.find(item => item.id === product.id);
+    if (existingProduct) {
+      setCart(cart.map(item => item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item));
+    } else {
+      setCart([...cart, { ...product, quantity: 1 }]);
+    }
     setShowCheckout(true);
+  };
+
+  const handleRemoveFromCart = (id) => {
+    setCart(cart.filter(item => item.id !== id));
   };
 
   const handleCartClick = () => {
     setShowCheckout(true);
   };
 
-  const totalPrice = cart.reduce((total, item) => total + parseFloat(item.price.substring(1)), 0);
+  const totalPrice = cart.reduce((total, item) => total + item.quantity * parseFloat(item.price.substring(1)), 0);
 
   return (
     <div className="App">
@@ -35,9 +44,7 @@ const App = () => {
       <Header />
       <main>
         <CarouselSection />
-        <div className="separator"></div>
         <FilterComponent filters={filters} setFilters={setFilters} currentSection={currentSection} />
-        
         <div id="men-fragrances" onClick={() => setCurrentSection('MenFragrances')}>
           <MenFragrances filters={filters} onAddToBag={handleAddToBag} />
         </div>
@@ -51,7 +58,7 @@ const App = () => {
         <OurStory />
         <div className="separator"></div>
         <CommunicateWithPerfumist />
-        {showCheckout && <Checkout cart={cart} totalPrice={`$${totalPrice.toFixed(2)}`} />}
+        {showCheckout && <Checkout cart={cart} totalPrice={`$${totalPrice.toFixed(2)}`} onRemoveFromCart={handleRemoveFromCart} />}
       </main>
       <Footer />
     </div>

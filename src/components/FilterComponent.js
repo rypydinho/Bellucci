@@ -1,41 +1,40 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './FilterComponent.css';
+import { useTranslation } from 'react-i18next';
 
 const FilterComponent = ({ filters, setFilters }) => {
-  const [expanded, setExpanded] = useState(false);
+  const { t } = useTranslation();
 
   const handleChange = (e) => {
-    const { name, value, checked } = e.target;
+    const { name, value, type, checked } = e.target;
     setFilters({
       ...filters,
-      [name]: checked ? value : ''
+      [name]: type === 'checkbox' ? (checked ? value : '') : value,
     });
   };
 
-  const clearFilters = () => {
+  const handleClear = () => {
     setFilters({});
-  };
-
-  const toggleSidebar = () => {
-    setExpanded(!expanded);
+    const inputs = document.querySelectorAll('.filter-component input');
+    inputs.forEach(input => {
+      if (input.type === 'checkbox' || input.type === 'radio') {
+        input.checked = false;
+      }
+    });
   };
 
   return (
-    <>
-      <button className="toggle-button" onClick={toggleSidebar}>
-        {expanded ? '<<' : '>>'}
-      </button>
-      <div className={`filter-component ${expanded ? 'expanded' : 'collapsed'}`}>
-        <h3>Filter Fragrances</h3>
-        <div className="filter-group">
-          <h4>Price Range</h4>
+    <div className="filter-component">
+      <h3>{t('filterComponent.filterFragrances')}</h3>
+      <div className="filter-group">
+        <div className="filter-column">
+          <h4>{t('filterComponent.priceRange')}</h4>
           <label>
             <input
               type="radio"
               name="price"
               value="0-200"
               onChange={handleChange}
-              checked={filters.price === '0-200'}
             />
             $0 - $200
           </label>
@@ -45,7 +44,6 @@ const FilterComponent = ({ filters, setFilters }) => {
               name="price"
               value="200-224"
               onChange={handleChange}
-              checked={filters.price === '200-224'}
             />
             $200 - $224
           </label>
@@ -55,55 +53,20 @@ const FilterComponent = ({ filters, setFilters }) => {
               name="price"
               value="225-270"
               onChange={handleChange}
-              checked={filters.price === '225-270'}
             />
             $225 - $270
           </label>
         </div>
-        <div className="filter-group">
-          <h4>Fragrance Family</h4>
-          <label>
-            <input
-              type="checkbox"
-              name="floral"
-              value="floral"
-              onChange={handleChange}
-              checked={filters.floral === 'floral'}
-            />
-            Floral
-          </label>
-          <label>
-            <input
-              type="checkbox"
-              name="woody"
-              value="woody"
-              onChange={handleChange}
-              checked={filters.woody === 'woody'}
-            />
-            Woody
-          </label>
-          <label>
-            <input
-              type="checkbox"
-              name="citrus"
-              value="citrus"
-              onChange={handleChange}
-              checked={filters.citrus === 'citrus'}
-            />
-            Citrus
-          </label>
-        </div>
-        <div className="filter-group">
-          <h4>Gender</h4>
+        <div className="filter-column">
+          <h4>{t('filterComponent.gender')}</h4>
           <label>
             <input
               type="radio"
               name="gender"
               value="men"
               onChange={handleChange}
-              checked={filters.gender === 'men'}
             />
-            Men
+            {t('filterComponent.men')}
           </label>
           <label>
             <input
@@ -111,9 +74,8 @@ const FilterComponent = ({ filters, setFilters }) => {
               name="gender"
               value="women"
               onChange={handleChange}
-              checked={filters.gender === 'women'}
             />
-            Women
+            {t('filterComponent.women')}
           </label>
           <label>
             <input
@@ -121,14 +83,43 @@ const FilterComponent = ({ filters, setFilters }) => {
               name="gender"
               value="unisex"
               onChange={handleChange}
-              checked={filters.gender === 'unisex'}
             />
-            Unisex
+            {t('filterComponent.unisex')}
           </label>
         </div>
-        <button className="clear-button" onClick={clearFilters}>Clear Filters</button>
+        <div className="filter-column">
+          <h4>{t('filterComponent.fragranceFamily')}</h4>
+          <label>
+            <input
+              type="checkbox"
+              name="floral"
+              value="floral"
+              onChange={handleChange}
+            />
+            {t('filterComponent.floral')}
+          </label>
+          <label>
+            <input
+              type="checkbox"
+              name="woody"
+              value="woody"
+              onChange={handleChange}
+            />
+            {t('filterComponent.woody')}
+          </label>
+          <label>
+            <input
+              type="checkbox"
+              name="citrus"
+              value="citrus"
+              onChange={handleChange}
+            />
+            {t('filterComponent.citrus')}
+          </label>
+        </div>
       </div>
-    </>
+      <button className="clear-button" onClick={handleClear}>{t('filterComponent.clearFilters')}</button>
+    </div>
   );
 };
 

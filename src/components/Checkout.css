@@ -1,97 +1,133 @@
 .checkout-section {
-    text-align: center;
-    margin: 4em auto;
-    padding: 4em;
-    max-width: 800px;
-    background: #FAF9F6; /* Off-White background */
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    font-family: 'Fustat', sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 100;
-    font-style: normal;
-  }
-  
-  .checkout-container {
-    display: flex;
-    flex-direction: column;
-    gap: 2em;
-  }
-  
-  .shipping-info,
-  .order-summary {
-    background: #FFF8DC; /* Light Ivory */
-    padding: 1em;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: left;
-  }
-  
-  .shipping-info h3,
-  .order-summary h3 {
-    color: #2F4F4F; /* Dark Slate Gray */
-    margin-bottom: 1em;
-    font-family: 'Playfair Display', serif; /* Elegant font */
-  }
-  
-  .shipping-info input,
-  .order-summary div {
-    display: block;
-    width: 100%;
-    margin-bottom: 0.5em;
-    padding: 0.5em;
-    border: 1px solid #E5E4E2; /* Platinum */
-    border-radius: 5px;
-    font-family: 'Fustat', sans-serif;
-    font-size: 1em;
-  }
-  
-  .name-fields {
-    display: flex;
-    gap: 1em;
-  }
-  
-  .region-postal {
-    display: flex;
-    gap: 1em;
-  }
-  
-  .total {
-    font-weight: bold;
-    margin-top: 1em;
-  }
-  
-  .ship-button {
-    font-family: 'Fustat', sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 100;
-    font-style: normal;
-    padding: 0.5em 1.5em;
-    background: #046307; /* Emerald Green */
-    color: #CBA135;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-    font-size: 1.25em;
-    transition: background 0.3s, transform 0.3s;
-    margin-top: 2em;
-  }
-  
-  .ship-button:hover {
-    background: #034f04; /* Darker green on hover */
-    transform: scale(1.05); /* Slightly enlarge on hover */
-  }
-  
-  .shipping-message {
-    text-align: center;
-    color: #2F4F4F; /* Dark Slate Gray */
-    font-family: 'Fustat', sans-serif;
-  }
-  
-  .error {
-    color: red;
-    font-size: 0.9em;
-    margin-top: -0.5em;
-    margin-bottom: 0.5em;
-  }
-  
+  text-align: center;
+  margin: 4em auto;
+  padding: 4em;
+  max-width: 800px;
+  background: #FAF9F6; /* Off-White background */
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-family: 'Fustat', sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 100;
+  font-style: normal;
+}
+
+.checkout-container {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+}
+
+.shipping-info,
+.order-summary {
+  text-align: center;
+  background: #FFF8DC; /* Light Ivory */
+  padding: 1em;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.shipping-info h3,
+.order-summary h3 {
+  color: #2F4F4F; /* Dark Slate Gray */
+  margin-bottom: 1em;
+  font-family: 'Playfair Display', serif; /* Elegant font */
+}
+
+.shipping-info input,
+.order-summary div {
+  display: block;
+  width: 100%;
+  margin-bottom: 0.5em;
+  padding: 0.5em;
+  border: 1px solid #E5E4E2; /* Platinum */
+  border-radius: 5px;
+  font-family: 'Fustat', sans-serif;
+  font-size: 1em;
+}
+
+.name-fields {
+  display: flex;
+  gap: 1em;
+}
+
+.region-postal {
+  display: flex;
+  gap: 1em;
+}
+
+.total {
+  font-weight: bold;
+  margin-top: 1em;
+}
+
+.ship-button {
+  font-family: 'Fustat', sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  padding: 0.5em 1.5em;
+  background: #004D40; /* Emerald Green */
+  color: #CBA135;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 1.25em;
+  transition: background 0.3s, transform 0.3s;
+  margin-top: 2em;
+}
+
+.ship-button:hover {
+  background: #00332D; /* Darker green on hover */
+  transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+.shipping-message {
+  text-align: center;
+  color: #2F4F4F; /* Dark Slate Gray */
+  font-family: 'Fustat', sans-serif;
+}
+
+.error {
+  color: red;
+  font-size: 0.9em;
+  margin-top: -0.5em;
+  margin-bottom: 0.5em;
+}
+
+.order-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1em;
+  text-align: center; /* Center the text */
+}
+
+.order-summary {
+  text-align: center; /* Center the order summary */
+}
+
+.order-item p {
+  margin: 0;
+}
+
+.remove-button {
+  background: #004D40; /* Bootstrap Danger */
+  font-family: 'Fustat', sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  color: #CBA135;
+  border: none;
+  padding: 0.25em 0.5em;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9em;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.remove-button:hover {
+  background: #00332D; /* Darker red on hover */
+  transform: scale(1.05); /* Slightly enlarge on hover */
+}
