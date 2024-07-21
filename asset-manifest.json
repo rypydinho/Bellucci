@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/Bellucci/static/css/main.6cb61dc9.css",
+    "main.js": "/Bellucci/static/js/main.eec72582.js",
+    "static/js/453.b3108be7.chunk.js": "/Bellucci/static/js/453.b3108be7.chunk.js",
+    "static/media/header2.jpeg": "/Bellucci/static/media/header2.19dcdbe5b4f7e1c815ec.jpeg",
+    "index.html": "/Bellucci/index.html",
+    "main.6cb61dc9.css.map": "/Bellucci/static/css/main.6cb61dc9.css.map",
+    "main.eec72582.js.map": "/Bellucci/static/js/main.eec72582.js.map",
+    "453.b3108be7.chunk.js.map": "/Bellucci/static/js/453.b3108be7.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6cb61dc9.css",
+    "static/js/main.eec72582.js"
+  ]
+}
