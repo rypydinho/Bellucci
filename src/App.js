@@ -12,11 +12,13 @@ import Checkout from './components/Checkout';
 import FilterComponent from './components/FilterComponent';
 import './App.css';
 
+
 const App = () => {
   const [showCheckout, setShowCheckout] = useState(false);
   const [cart, setCart] = useState([]);
   const [filters, setFilters] = useState({});
   const [currentSection, setCurrentSection] = useState('');
+
 
   const handleAddToBag = (product) => {
     const existingProduct = cart.find(item => item.id === product.id);
