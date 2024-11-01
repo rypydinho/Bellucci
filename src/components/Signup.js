@@ -2,15 +2,15 @@ import React, { useState } from "react";
 import "./Signup.css";
 
 const Signup = ({ onSignup }) => {
-  const [name, setName] = useState("");
   const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
     // Call the onSignup function passed as a prop
-    onSignup({ name, firstName, email, password });
+    onSignup({ firstName, lastName, email, password });
   };
 
   return (
@@ -18,22 +18,22 @@ const Signup = ({ onSignup }) => {
       <form onSubmit={handleSubmit} className="signup-form">
         <h2>Sign Up</h2>
         <div className="form-group">
-          <label htmlFor="name">Name:</label>
-          <input
-            type="text"
-            id="name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            required
-          />
-        </div>
-        <div className="form-group">
           <label htmlFor="firstName">First Name:</label>
           <input
             type="text"
             id="firstName"
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="lastName">Last Name:</label>
+          <input
+            type="text"
+            id="lastName"
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
             required
           />
         </div>
