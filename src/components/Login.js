@@ -1,15 +1,35 @@
 import "./Login.css";
+import { auth } from "../firebase.config";
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Login = ({ onLogin }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
-  const handleSubmit = (e) => {
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     // Call the onLogin function passed as a prop
-    onLogin({ email, password });
+    // onLogin({ email, password });
+
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      
+      // Clear fields 
+      setEmail("");
+      setPassword("");
+
+      // nav to home page
+      navigate("/");
+
+    } catch (error) {
+      setError(error.message);
+    }
   };
 
   return (
