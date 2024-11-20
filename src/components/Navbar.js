@@ -16,7 +16,6 @@ const Navbar = ({ onCartClick }) => {
       setUser(currentUser); // Set user when auth state changes
     });
 
-
     return () => unsubscribe();
   }, []);
 
