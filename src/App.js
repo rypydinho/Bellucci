@@ -13,6 +13,7 @@ import Footer from "./components/Footer";
 import Checkout from "./components/Checkout";
 import FilterComponent from "./components/FilterComponent";
 import Signup from "./components/Signup";
+import UserProfile from "./components/UserProfile";
 import "./App.css";
 
 
@@ -62,6 +63,7 @@ const App = () => {
           <Routes>
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
+            <Route path="/profile" element={<UserProfile />} />
             <Route
               path="/"
               element={

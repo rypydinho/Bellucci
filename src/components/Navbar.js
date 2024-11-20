@@ -72,6 +72,15 @@ const Navbar = ({ onCartClick }) => {
         )
         }
       </div>
+      <div className="auth-link">
+        { user ? (
+                <a className="login-link" href="/profile">Profile</a>
+
+        ) : (
+          <></>
+        )
+        }
+      </div>
     </nav>
   );
 };
