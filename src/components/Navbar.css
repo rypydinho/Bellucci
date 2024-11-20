@@ -93,3 +93,30 @@ nav {
   transform: scale(1.1);
   color: #cba135; /* Soft Gold */
 }
+
+.logout-button {
+  background-color: #ff6b6b; /* A red color for logout */
+  color: #ffffff; /* White text */
+  border: none; /* No border */
+  border-radius: 5px; /* Slightly rounded corners */
+  padding: 10px 15px; /* Padding for size */
+  font-size: 16px; /* Font size for readability */
+  font-weight: bold; /* Make the text bold */
+  cursor: pointer; /* Pointer cursor for better UX */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transitions */
+}
+
+.logout-button:hover {
+  background-color: #ff4c4c; /* Darker red on hover */
+  transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+.logout-button:active {
+  background-color: #e63939; /* Even darker red when pressed */
+  transform: scale(0.95); /* Shrink slightly on click */
+}
+
+.logout-button:focus {
+  outline: none; /* Remove default focus outline */
+  box-shadow: 0 0 5px rgba(255, 107, 107, 0.8); /* Add a glowing outline */
+}
